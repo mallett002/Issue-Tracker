@@ -1,3 +1,7 @@
+const form = document.getElementById('testForm');
+const form2 = document.getElementById('testForm2');
+const form3 = document.getElementById('testForm3');
+
 /*
 $(function() {
     $('#testForm').submit(function(e) {

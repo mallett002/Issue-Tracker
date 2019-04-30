@@ -1,5 +1,9 @@
+const currentProject = window.location.pathname.replace(/\//g, "");
+const url = "/api/issues/"+currentProject;
+const projectTitle = document.getElementById('projectTitle');
+const issueDisplay = document.getElementById('issueDisplay');
+const newIssue = document.getElementById('newIssue');
 // $(function() {
-//     var currentProject = window.location.pathname.replace(/\//g, "");;
 //     var url = "/api/issues/"+currentProject;
 //     $('#projectTitle').text('All issues for: '+currentProject)
 //     $.ajax({
