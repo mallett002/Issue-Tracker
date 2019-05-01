@@ -21,3 +21,8 @@ body {
 .id {
     font-size: 10.5px;
 }
+
+.card {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
