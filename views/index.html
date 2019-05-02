@@ -12,21 +12,33 @@
 </head>
 <body>
 <div class="container">
-    <header>
-        <h1>
+    <header id="header">
+        <h1 id="title">
             Issue Tracker
         </h1>
+        <div id="scroll-to-userStories">
+            <button id="user-stories-btn" class="btn btn-success">User Stories</button>
+        </div>
     </header>
-    <div id='userstories' class="card">
-        <h3>Example get usage:</h3>
-        <code>/api/issues/{project}</code><br>
-        <code>/api/issues/{project}?open=true&amp;assigned_to=Joe</code><br>
-        <h3>Example return:</h3>
-        <code>[{"_id":"5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]</code>
 
-        <a href='/apitest/'>
-            <button type="button" class="btn btn-primary">EXAMPLE</button>
-        </a>
+    <div id='userstories' class="card">
+        <div class="card-body">
+            <h3 class="card-subtitle mb-2 text-muted">Example get usage:</h3>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">/api/issues/{project}</li>
+                <li class="breadcrumb-item">/api/issues/{project}?open=true&amp;assigned_to=Joe</li>
+            </ul>
+
+            <h3 class="card-subtitle mb-2 text-muted">Example return:</h3>
+            <ul class="breadcrumb">
+                <li  class="breadcrumb-item">[{"_id":"5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]
+                </li>
+            </ul>
+
+            <a href='/apitest/'>
+                <button type="button" class="btn btn-primary">EXAMPLE</button>
+            </a>
+        </div>
     </div>
 
     <div id='testui' class="card">
@@ -37,42 +49,80 @@
         <div class="card-body">
             <h3 class="card-title mb-2 text-muted">Submit issue on <i>apitest</i></h3>
             <form id="testForm">
-                <input type="text" name="issue_title" placeholder="*Title" required=''><br>
-                <textarea type="text" name="issue_text" placeholder="*Text" required=''></textarea><br>
-                <input type="text" name="created_by" placeholder="*Created by" required=''><br>
-                <input type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
-                <input type="text" name="status_text" placeholder="(opt)Status text"><br>
-                <button type="submit">Submit Issue</button>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="issue_title" placeholder="*Title" required=''><br>
+                    <textarea class="form-control" type="text" name="issue_text" placeholder="*Text" required=''></textarea><br>
+                    <input class="form-control" type="text" name="created_by" placeholder="*Created by" required=''><br>
+                    <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
+                    <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
+                    <button class="btn btn-primary" type="submit">Submit Issue</button><br>
+                </div>
             </form>
         </div>
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Update issue on <i>apitest</i></h3>
             <form id="testForm2">
-                <input type="text" name="_id" placeholder="*_id" required=''><br>
-                <input type="text" name="issue_title" placeholder="(opt)Title"><br>
-                <textarea type="text" name="issue_text" placeholder="(opt)Text"></textarea><br>
-                <input type="text" name="created_by" placeholder="(opt)Created by"><br>
-                <input type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
-                <input type="text" name="status_text" placeholder="(opt)Status text"><br>
-                <label><input type="checkbox" name="open" value=false> Check to close issue</label><br>
-                <button type="submit">Submit Issue</button>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="_id" placeholder="*_id" required=''><br>
+                    <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
+                    <textarea class="form-control" type="text" name="issue_text" placeholder="(opt)Text"></textarea><br>
+                    <input class="form-control" type="text" name="created_by" placeholder="(opt)Created by"><br>
+                    <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
+                    <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="open" value=false id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Check to close issue
+                        </label>
+                    </div><br>
+                    <button class="btn btn-primary" type="submit">Submit Issue</button><br>
+                </div>
             </form>
         </div>
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Delete issue on <i>apitest</i></h3>
-            <form id="testForm3">
-                <input type="text" name="_id" placeholder="_id" required=''><br>
-                <button type="submit">Delete Issue</button>
+            <form id="testForm3" class="form-inline">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="_id" placeholder="_id" required='' style="margin-right: 10px">
+                    <button class="btn btn-primary" type="submit">Delete Issue</button>
+                </div>
             </form>
-            <code id='jsonResult'></code>
+
+            <!--Can change this to display: block when result comes in-->
+            <ul class="breadcrumb" style="display: none">
+                <li class="breadcrumb-item">
+                    <code id='jsonResult'></code>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card" id="user-stories">
+        <div class="card-header">
+            <h2>User Stories</h2>
+        </div>
+        <div class="card-body">
+
         </div>
     </div>
 </div>
 
 
-<script src="../client/index.js"></script>
+<script>
+const form = document.getElementById('testForm');
+const form2 = document.getElementById('testForm2');
+const form3 = document.getElementById('testForm3');
+const userStoriesBtn = document.getElementById('user-stories-btn');
+const userStories = document.getElementById('user-stories');
+
+userStoriesBtn.addEventListener('click', (e) => {
+    console.log(e);
+    userStories.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+
+</script>
 
 </body>
 </html>
