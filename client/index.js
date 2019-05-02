@@ -1,6 +1,13 @@
 const form = document.getElementById('testForm');
 const form2 = document.getElementById('testForm2');
 const form3 = document.getElementById('testForm3');
+const userStoriesBtn = document.getElementById('user-stories-btn');
+const userStories = document.getElementById('user-stories');
+
+userStoriesBtn.addEventListener('click', (e) => {
+    console.log(e);
+   userStories.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 
 /*
 $(function() {
