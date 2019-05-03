@@ -13,6 +13,7 @@ if (dotEnv.error) {
 const app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/client', express.static(process.cwd() + '/client'));
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
