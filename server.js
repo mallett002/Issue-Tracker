@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const apiRoutes = require('./routes/api.js');
 const dotEnv = require('dotenv').config();
+const helmet = require('helmet');
 
 if (dotEnv.error) {
     throw dotEnv.error;
@@ -17,6 +18,17 @@ app.use('/client', express.static(process.cwd() + '/client'));
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Security
+app.use(helmet({
+    frameguard: {
+        action: 'deny'
+    },
+    contentSecurityPolicy: {
+        directives: {"imgSrc": ["'self'",'hyperdev.com']}
+    },
+    dnsPrefetchControl: false
+}));
 
 // Sample front-end
 app.route('/:project/')
