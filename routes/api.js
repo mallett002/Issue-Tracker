@@ -1,10 +1,9 @@
 const createIssue = require('../controllers/createIssue');
+const getIssues = require('../controllers/getIssues');
 
 module.exports = (app) => {
   app.route('/api/issues/')
-      .get((req, res) => {
-          const project = req.params.project; // access the url param "project"
-      })
+      .get(getIssues)
 
       .post(createIssue)
 
