@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to HyperDev!</title>
+    <title>Issue Tracker</title>
     <meta name="description" content="A cool thing made with HyperDev">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,28 +11,11 @@
 </head>
 <body>
 <header>
-    <h1 id='projectTitle'></h1>
+    <h1 id='projectTitle'>All Issues</h1>
 </header>
-<center>
-    <div id='submitNewIssue'>
-        <br>
-        <h3>Submit a new issue:</h3>
-        <form id="newIssue" method="post" action="/api/">
-            <input type="text" name="issue_title" placeholder="*Title" style="width: 320px; margin-bottom: 3px;" required=''><br>
-            <textarea type="text" name="issue_text" placeholder="*Text" style="width: 320px; height: 100px;" required=''></textarea><br>
-            <input type="text" name="created_by" placeholder="*Created by" style="width: 100px" required=''>
-            <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px">
-            <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br>
-            <button type="submit">Submit Issue</button>
-        </form>
-    </div>
 
     <div id='issueDisplay'></div>
 
-    <hr style='margin: 50px; margin-top: 200px'>
-</center>
-
-<script src="../client/issue.js"></script>
 
 </body>
 </html>

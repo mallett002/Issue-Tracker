@@ -12,58 +12,63 @@
 <body>
 <div class="container">
     <header id="header">
-        <h1 id="title" class=" alert alert-success">
+        <h1 id="title" class=" alert alert-info">
             Issue Tracker CRUD API
         </h1>
         <div id="scroll-to-userStories">
-            <button id="user-stories-btn" class="btn btn-success">User Stories</button>
+            <button id="user-stories-btn" class="btn btn-outline-secondary">User Stories</button>
         </div>
     </header>
 
     <div id='userstories' class="card">
+        <div class="card-header alert alert-info">
+            <h2>GET Usage</h2>
+        </div>
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Example get usage:</h3>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item">/api/issues/{project}</li>
-                <li class="breadcrumb-item">/api/issues/{project}?open=true&amp;assigned_to=Joe</li>
+            <ul class="list-group">
+                <li class="list-group-item"><code>/api/issues/</code></li>
+                <li class="list-group-item"><code>/api/issues/?open=true&amp;assigned_to=Joe</code></li>
             </ul>
 
-            <h3 class="card-subtitle mb-2 text-muted">Example return:</h3>
-            <ul class="breadcrumb">
-                <li  class="breadcrumb-item">[{"_id":"5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]
+            <h3 class="card-subtitle mb-2 text-muted" style="margin-top: 1em;">Example return:</h3>
+            <ul class="list-group" style="margin-bottom: 2em;">
+                <li class="list-group-item">
+                    <code>[{"_id":"5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]
+                    </code>
                 </li>
             </ul>
 
             <a href='/apitest/'>
-                <button type="button" class="btn btn-primary">EXAMPLE</button>
+                <button type="button" class="btn btn-outline-secondary">All Issues</button>
             </a>
         </div>
     </div>
 
     <div id='testui' class="card">
-        <div class="card-header alert alert-success">
-            <h2 >API Tests</h2>
+        <div class="card-header alert alert-info">
+            <h2>API Tests</h2>
         </div>
 
         <div class="card-body">
-            <h3 class="card-title mb-2 text-muted">Submit issue on <i>apitest</i></h3>
-            <form id="testForm">
+            <h3 class="card-title mb-2 text-muted">Submit issue on <i>/api/issues</i></h3>
+            <form id="newIssue" method="post" action="/api/issues/">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="issue_title" placeholder="*Title" required=''><br>
-                    <textarea class="form-control" type="text" name="issue_text" placeholder="*Text" required=''></textarea><br>
-                    <input class="form-control" type="text" name="created_by" placeholder="*Created by" required=''><br>
+                    <input class="form-control" type="text" name="issue_title" placeholder="*Title" required><br>
+                    <textarea class="form-control" type="text" name="issue_text" placeholder="*Text" required></textarea><br>
+                    <input class="form-control" type="text" name="created_by" placeholder="*Created by" required><br>
                     <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
                     <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
-                    <button class="btn btn-primary" type="submit">Submit Issue</button><br>
+                    <button class="btn btn-outline-secondary" type="submit">Submit Issue</button><br>
                 </div>
             </form>
         </div>
 
         <div class="card-body">
-            <h3 class="card-subtitle mb-2 text-muted">Update issue on <i>apitest</i></h3>
+            <h3 class="card-subtitle mb-2 text-muted">Update issue on <i>api/issues</i></h3>
             <form id="testForm2">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="_id" placeholder="*_id" required=''><br>
+                    <input class="form-control" type="text" name="_id" placeholder="*_id" required><br>
                     <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
                     <textarea class="form-control" type="text" name="issue_text" placeholder="(opt)Text"></textarea><br>
                     <input class="form-control" type="text" name="created_by" placeholder="(opt)Created by"><br>
@@ -75,17 +80,17 @@
                             Check to close issue
                         </label>
                     </div><br>
-                    <button class="btn btn-primary" type="submit">Submit Issue</button><br>
+                    <button class="btn btn-outline-secondary" type="submit">Submit Issue</button><br>
                 </div>
             </form>
         </div>
 
         <div class="card-body">
-            <h3 class="card-subtitle mb-2 text-muted">Delete issue on <i>apitest</i></h3>
+            <h3 class="card-subtitle mb-2 text-muted">Delete issue on <i>api/issues</i></h3>
             <form id="testForm3" class="form-inline">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="_id" placeholder="_id" required='' style="margin-right: 10px">
-                    <button class="btn btn-primary" type="submit">Delete Issue</button>
+                    <input class="form-control" type="text" name="_id" placeholder="_id" required style="margin-right: 10px">
+                    <button class="btn btn-outline-secondary" type="submit">Delete Issue</button>
                 </div>
             </form>
 
