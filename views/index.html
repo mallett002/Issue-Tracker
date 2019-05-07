@@ -75,7 +75,7 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Update an issue</h3>
-            <form id="testForm2">
+            <form id="updateForm" method="post" action="/api/issues/">
                 <div class="form-group">
                     <input class="form-control" type="text" name="_id" placeholder="*_id" required><br>
                     <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
@@ -84,7 +84,7 @@
                     <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
                     <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="open" value=false id="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" name="close_issue" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
                             Check to close issue
                         </label>
@@ -96,7 +96,7 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Delete an issue</h3>
-            <form id="testForm3" class="form-inline">
+            <form id="testForm3" class="form-inline" method="post">
                 <div class="form-group">
                     <input class="form-control" type="text" name="_id" placeholder="_id" required style="margin-right: 10px">
                     <button class="btn btn-outline-secondary" type="submit">Delete Issue</button>

@@ -1,5 +1,6 @@
 const createIssue = require('../controllers/createIssue');
 const getIssues = require('../controllers/getIssues');
+const updateIssue = require('../controllers/updateIssue');
 
 module.exports = (app) => {
   app.route('/api/issues/')
@@ -7,10 +8,7 @@ module.exports = (app) => {
 
       .post(createIssue)
 
-      .put(function (req, res){
-          const project = req.params.project;
-
-      })
+      .put(updateIssue)
 
       .delete(function (req, res){
           const project = req.params.project;
