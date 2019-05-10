@@ -1,6 +1,7 @@
 const moment = require('moment');
 
 module.exports = (req, res) => {
+    // The request isn't making it into here when I post from index.js
     const title = req.body.issue_title;
     const text = req.body.issue_text;
     const createdBy = req.body.created_by;
