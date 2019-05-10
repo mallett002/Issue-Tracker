@@ -40,7 +40,7 @@
             </ul>
 
             <!--Get issues-->
-            <form method="get" action="/api/issues/">
+            <form id="getIssuesForm" method="get" action="/api/issues/">
                 <div class="form-group">
                     <label for="assigned_to">Get assigned issues</label>
                     <input id="assigned_to" class="form-control" type="text" name="assigned_to" placeholder="Ex: Joe"><br>
@@ -61,7 +61,7 @@
 
         <div class="card-body">
             <h3 class="card-title mb-2 text-muted">Submit new issue</h3>
-            <form id="newIssue" method="post" action="/api/issues/">
+            <form id="createIssuesForm">
                 <div class="form-group">
                     <input class="form-control" type="text" name="issue_title" placeholder="*Title" required><br>
                     <textarea class="form-control" type="text" name="issue_text" placeholder="*Text" required></textarea><br>
@@ -75,7 +75,7 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Update an issue</h3>
-            <form id="updateForm" method="post" action="/api/issues/">
+            <form id="updateIssuesForm">
                 <div class="form-group">
                     <input class="form-control" type="text" name="_id" placeholder="*_id" required><br>
                     <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
@@ -96,7 +96,7 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Delete an issue</h3>
-            <form id="testForm3" class="form-inline" method="post">
+            <form id="deleteIssuesForm" class="form-inline">
                 <div class="form-group">
                     <input class="form-control" type="text" name="_id" placeholder="_id" required style="margin-right: 10px">
                     <button class="btn btn-outline-secondary" type="submit">Delete Issue</button>
@@ -130,8 +130,6 @@
         </div>
     </div>
 </div>
-
-<script src="../client/index.js"></script>
 
 </body>
 </html>

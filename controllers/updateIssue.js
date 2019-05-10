@@ -1,5 +1,6 @@
 const moment = require('moment');
 
+// Call this function from client side using axios or fetch
 module.exports = (req, res) => {
     const id = req.body._id;
     const title = req.body.issue_title;
