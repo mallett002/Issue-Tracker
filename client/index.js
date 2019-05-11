@@ -36,8 +36,39 @@ createIssuesForm.addEventListener('submit', (e) => {
    axios.post("/api/issues/", {
        ...payload
    })
-       .then(res => console.log("Sent successfully with response: " + res))
+       .then(res => console.log(`Sent successfully with response: ${res}`))
        .catch(e => {
           throw Error(e);
+       });
+});
+
+// Updating an issue
+const idUpdate = document.getElementById('id_update');
+const title_update = document.getElementById('title_update');
+const text_update = document.getElementById('text_update');
+const created_by_update = document.getElementById('created_by_update');
+const assigned_to_update = document.getElementById('assigned_to_update');
+const status_text_update = document.getElementById('status_text_update');
+const close_issue_update = document.getElementById('close_issue_update');
+
+updateIssuesForm.addEventListener('submit', e => {
+   e.preventDefault();
+
+    const payload = {
+        id: idUpdate.value,
+        title: title_update.value,
+        text: text_update.value,
+        createdBy: created_by_update.value,
+        assignedTo: assigned_to_update.value,
+        statusText: status_text_update.value,
+        closeIssue: close_issue_update.checked
+    };
+
+   axios.put('/api/issues/', {
+       ...payload
+   })
+       .then(res => console.log(`Successfully sent with ${res}`))
+       .catch(e => {
+           throw Error(e);
        });
 });

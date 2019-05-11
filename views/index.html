@@ -77,15 +77,15 @@
             <h3 class="card-subtitle mb-2 text-muted">Update an issue</h3>
             <form id="updateIssuesForm">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="_id" placeholder="*_id" required><br>
-                    <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
-                    <textarea class="form-control" type="text" name="issue_text" placeholder="(opt)Text"></textarea><br>
-                    <input class="form-control" type="text" name="created_by" placeholder="(opt)Created by"><br>
-                    <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
-                    <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
+                    <input class="form-control" type="text" name="_id" id="id_update" placeholder="*_id" required><br>
+                    <input class="form-control" type="text" name="issue_title" id="title_update" placeholder="(opt)Title"><br>
+                    <textarea class="form-control" type="text" name="issue_text" id="text_update" placeholder="(opt)Text"></textarea><br>
+                    <input class="form-control" type="text" name="created_by" id="created_by_update" placeholder="(opt)Created by"><br>
+                    <input class="form-control" type="text" name="assigned_to" id="assigned_to_update" placeholder="(opt)Assigned to"><br>
+                    <input class="form-control" type="text" name="status_text" id="status_text_update" placeholder="(opt)Status text"><br>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="close_issue" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" name="close_issue" id="close_issue_update">
+                        <label class="form-check-label" for="close_issue_update">
                             Check to close issue
                         </label>
                     </div><br>
