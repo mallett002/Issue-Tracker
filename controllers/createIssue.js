@@ -1,11 +1,11 @@
 const moment = require('moment');
 
 module.exports = (req, res) => {
-    const title = req.body.issue_title;
-    const text = req.body.issue_text;
-    const createdBy = req.body.created_by;
-    const assignedTo = req.body.assigned_to;
-    const statusText = req.body.status_text;
+    const title = req.body.title;
+    const text = req.body.text;
+    const createdBy = req.body.createdBy;
+    const assignedTo = req.body.assignedTo;
+    const statusText = req.body.statusText;
     const date = moment();
 
     let created_on = date.format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -23,5 +23,7 @@ module.exports = (req, res) => {
         _id: 1
     };
 
-    res.status(200).send(payload);
+    console.log({payload});
+
+    res.status(201).send(`created a new issue with title ${title}`);
 };

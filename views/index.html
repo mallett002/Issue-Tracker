@@ -40,7 +40,7 @@
             </ul>
 
             <!--Get issues-->
-            <form method="get" action="/api/issues/">
+            <form id="getIssuesForm" method="get" action="/api/issues/">
                 <div class="form-group">
                     <label for="assigned_to">Get assigned issues</label>
                     <input id="assigned_to" class="form-control" type="text" name="assigned_to" placeholder="Ex: Joe"><br>
@@ -61,13 +61,13 @@
 
         <div class="card-body">
             <h3 class="card-title mb-2 text-muted">Submit new issue</h3>
-            <form id="newIssue" method="post" action="/api/issues/">
+            <form id="createIssuesForm">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="issue_title" placeholder="*Title" required><br>
-                    <textarea class="form-control" type="text" name="issue_text" placeholder="*Text" required></textarea><br>
-                    <input class="form-control" type="text" name="created_by" placeholder="*Created by" required><br>
-                    <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
-                    <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
+                    <input class="form-control" type="text" name="issue_title" id="issue_title_create" placeholder="*Title" required><br>
+                    <textarea class="form-control" type="text" name="issue_text" id="issue_text_create" placeholder="*Text" required></textarea><br>
+                    <input class="form-control" type="text" name="created_by" id="created_by_create" placeholder="*Created by" required><br>
+                    <input class="form-control" type="text" name="assigned_to" id="assigned_to_create" placeholder="(opt)Assigned to"><br>
+                    <input class="form-control" type="text" name="status_text" id="status_text_create" placeholder="(opt)Status text"><br>
                     <button class="btn btn-outline-secondary" type="submit">Submit Issue</button><br>
                 </div>
             </form>
@@ -75,17 +75,17 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Update an issue</h3>
-            <form id="updateForm" method="post" action="/api/issues/">
+            <form id="updateIssuesForm">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="_id" placeholder="*_id" required><br>
-                    <input class="form-control" type="text" name="issue_title" placeholder="(opt)Title"><br>
-                    <textarea class="form-control" type="text" name="issue_text" placeholder="(opt)Text"></textarea><br>
-                    <input class="form-control" type="text" name="created_by" placeholder="(opt)Created by"><br>
-                    <input class="form-control" type="text" name="assigned_to" placeholder="(opt)Assigned to"><br>
-                    <input class="form-control" type="text" name="status_text" placeholder="(opt)Status text"><br>
+                    <input class="form-control" type="text" name="_id" id="id_update" placeholder="*_id" required><br>
+                    <input class="form-control" type="text" name="issue_title" id="title_update" placeholder="(opt)Title"><br>
+                    <textarea class="form-control" type="text" name="issue_text" id="text_update" placeholder="(opt)Text"></textarea><br>
+                    <input class="form-control" type="text" name="created_by" id="created_by_update" placeholder="(opt)Created by"><br>
+                    <input class="form-control" type="text" name="assigned_to" id="assigned_to_update" placeholder="(opt)Assigned to"><br>
+                    <input class="form-control" type="text" name="status_text" id="status_text_update" placeholder="(opt)Status text"><br>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="close_issue" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" name="close_issue" id="close_issue_update">
+                        <label class="form-check-label" for="close_issue_update">
                             Check to close issue
                         </label>
                     </div><br>
@@ -96,9 +96,9 @@
 
         <div class="card-body">
             <h3 class="card-subtitle mb-2 text-muted">Delete an issue</h3>
-            <form id="testForm3" class="form-inline" method="post">
+            <form id="deleteIssuesForm" class="form-inline">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="_id" placeholder="_id" required style="margin-right: 10px">
+                    <input class="form-control" type="text" name="_id" id="id_delete" placeholder="_id" required style="margin-right: 10px">
                     <button class="btn btn-outline-secondary" type="submit">Delete Issue</button>
                 </div>
             </form>
@@ -130,8 +130,6 @@
         </div>
     </div>
 </div>
-
-<script src="../client/index.js"></script>
 
 </body>
 </html>
