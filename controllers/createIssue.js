@@ -25,5 +25,5 @@ module.exports = (req, res) => {
 
     console.log({payload});
 
-    res.redirect('/');
+    res.status(201).send(`created a new issue with title ${title}`);
 };

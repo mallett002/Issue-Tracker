@@ -10,7 +10,6 @@ userStoriesBtn.addEventListener('click', (e) => {
 });
 
 // Forms
-const getIssuesForm = document.getElementById('getIssuesForm');
 const createIssuesForm = document.getElementById('createIssuesForm');
 const updateIssuesForm = document.getElementById('updateIssuesForm');
 const deleteIssuesForm = document.getElementById('deleteIssuesForm');
@@ -51,7 +50,7 @@ const assigned_to_update = document.getElementById('assigned_to_update');
 const status_text_update = document.getElementById('status_text_update');
 const close_issue_update = document.getElementById('close_issue_update');
 
-updateIssuesForm.addEventListener('submit', e => {
+updateIssuesForm.addEventListener('submit', (e) => {
    e.preventDefault();
 
     const payload = {
@@ -67,8 +66,29 @@ updateIssuesForm.addEventListener('submit', e => {
    axios.put('/api/issues/', {
        ...payload
    })
-       .then(res => console.log(`Successfully sent with ${res}`))
+       .then(res => console.log(`Sent successfully with response ${res}`))
        .catch(e => {
            throw Error(e);
        });
+});
+
+// Deleting an issue
+const deleteInput = document.getElementById('id_delete');
+
+deleteIssuesForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const payload = {
+        id: deleteInput.value
+    };
+
+    axios({
+        method: 'delete',
+        url: '/api/issues/',
+        data: {...payload}
+    })
+        .then(res => console.log(`Sent successfully with response ${res}`))
+        .catch(e => {
+            throw Error(e);
+        });
 });

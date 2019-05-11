@@ -1,4 +1,5 @@
 module.exports = (req, res) => {
+    console.log('Retrieving issues...');
     const title = req.query.assigned_to;
     const open = req.query.open_issues;
     let querySearch = {title};
@@ -8,5 +9,6 @@ module.exports = (req, res) => {
     }
 
     console.log(querySearch);
-    res.status(200).send(querySearch);
+
+    res.redirect('../../issues.html');
 };
