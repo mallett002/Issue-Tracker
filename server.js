@@ -46,17 +46,16 @@ app.route('/')
 apiRoutes(app);
 
 // 404 Middleware
-// app.use((req, res) => {
-//     res.status(404)
-//         .type('text')
-//         .send('Not found');
-// });
+app.use((req, res) => {
+    res.status(404)
+        .type('text')
+        .send('Not found');
+});
 
-// Start server and tests!
 app.listen(process.env.port || 3000, () => {
     process.env.port
-        ? console.log("Listening on port " + process.env.port)
-        : console.log("Listening on port 3000");
+        ? console.log("Server is running on port " + process.env.port)
+        : console.log("Server is running on port 3000");
 });
 
 module.exports = app;

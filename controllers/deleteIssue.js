@@ -1,5 +1,3 @@
-// Call this function from client side using axios or fetch
-
 module.exports = (req, res) => {
     const id = req.body._id;
 
