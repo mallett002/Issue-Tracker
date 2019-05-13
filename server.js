@@ -46,11 +46,11 @@ app.route('/')
 apiRoutes(app);
 
 // 404 Middleware
-// app.use((req, res) => {
-//     res.status(404)
-//         .type('text')
-//         .send('Not found');
-// });
+app.use((req, res) => {
+    res.status(404)
+        .type('text')
+        .send('Not found');
+});
 
 app.listen(process.env.port || 3000, () => {
     process.env.port

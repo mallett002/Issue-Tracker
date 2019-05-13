@@ -10,5 +10,5 @@ module.exports = (req, res) => {
 
     console.log(querySearch);
 
-    res.redirect('../../issues.html');
+    res.json(querySearch);
 };

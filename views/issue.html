@@ -10,14 +10,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<header>
-    <h1 id='projectTitle'>All Issues</h1>
-</header>
+<div class="container">
+    <header class="alert alert-success">
+        <h1 id='projectTitle'>Issues</h1>
+    </header>
 
-    <div id='issueDisplay' class="card">
-        Gona put some stuff in here..
+    <div id='issuesDisplay' class="card">
+        <div class="card-header alert alert-success">
+            <h2>Filter Issues</h2>
+        </div>
+
+        <div class="card-body">
+            <form id="getIssuesForm">
+                <div class="form-group">
+                    <label for="assigned_to">Get assigned issues</label>
+                    <input id="assigned_to" class="form-control" type="text" name="assigned_to" placeholder="Ex: Joe"><br>
+                    <div class="form-check">
+                        <input type="checkbox" name="open_issues" class="form-check-input" id="openIssueCheck">
+                        <label class="form-check-label" for="openIssueCheck">Open Issues</label>
+                    </div><br>
+                    <button class="btn btn-outline-secondary" type="submit">Get Issues</button><br>
+                </div>
+            </form>
+        </div>
     </div>
-
+</div>
 
 </body>
 </html>
