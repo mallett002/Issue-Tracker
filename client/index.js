@@ -1,14 +1,5 @@
 import axios from 'axios';
 
-// Scrolling to user stories
-const userStoriesBtn = document.getElementById('user-stories-btn');
-const userStories = document.getElementById('user-stories');
-
-userStoriesBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    userStories.scrollIntoView({behavior: 'smooth', block: 'center'});
-});
-
 // Forms
 const createIssuesForm = document.getElementById('createIssuesForm');
 const updateIssuesForm = document.getElementById('updateIssuesForm');
@@ -91,4 +82,29 @@ deleteIssuesForm.addEventListener('submit', (e) => {
         .catch(e => {
             throw Error(e);
         });
+});
+
+// Get issues
+const getIssuesForm = document.getElementById('getIssuesForm');
+const assignedToInput = document.getElementById('assigned_to');
+const openIssuesCheck = document.getElementById('openIssueCheck');
+
+getIssuesForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const payload = {
+        assigned_to: assignedToInput.value,
+        open_issues: openIssuesCheck.checked
+    };
+
+    axios({
+        method: 'get',
+        url: '/api/issues/',
+        params: {...payload}
+    })
+        .then(res => {
+            console.log(res);
+        }).catch(e => {
+        console.log("Error: " + e);
+    });
 });

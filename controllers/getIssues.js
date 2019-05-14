@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         querySearch.open = true
     }
 
-    console.log(querySearch);
+    console.log({querySearch});
 
     res.json(querySearch);
 };
