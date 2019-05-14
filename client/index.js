@@ -1,14 +1,5 @@
 import axios from 'axios';
 
-// Scrolling to user stories
-const userStoriesBtn = document.getElementById('user-stories-btn');
-const userStories = document.getElementById('user-stories');
-
-userStoriesBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-   userStories.scrollIntoView({behavior: 'smooth', block: 'center'});
-});
-
 // Forms
 const createIssuesForm = document.getElementById('createIssuesForm');
 const updateIssuesForm = document.getElementById('updateIssuesForm');
@@ -24,21 +15,21 @@ const status_text_create = document.getElementById('status_text_create');
 createIssuesForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-   const payload = {
-       title: issue_title_create.value,
-       text: issue_text_create.value,
-       createdBy: created_by_create.value,
-       assignedTo: assigned_to_create.value,
-       statusText: status_text_create.value
-   };
+    const payload = {
+        title: issue_title_create.value,
+        text: issue_text_create.value,
+        createdBy: created_by_create.value,
+        assignedTo: assigned_to_create.value,
+        statusText: status_text_create.value
+    };
 
-   axios.post("/api/issues/", {
-       ...payload
-   })
-       .then(res => console.log(`Sent successfully with response: ${res}`))
-       .catch(e => {
-          throw Error(e);
-       });
+    axios.post("/api/issues/", {
+        ...payload
+    })
+        .then(res => console.log(`Sent successfully with response: ${res}`))
+        .catch(e => {
+            throw Error(e);
+        });
 });
 
 // Updating an issue
@@ -51,7 +42,7 @@ const status_text_update = document.getElementById('status_text_update');
 const close_issue_update = document.getElementById('close_issue_update');
 
 updateIssuesForm.addEventListener('submit', (e) => {
-   e.preventDefault();
+    e.preventDefault();
 
     const payload = {
         id: idUpdate.value,
@@ -63,13 +54,13 @@ updateIssuesForm.addEventListener('submit', (e) => {
         closeIssue: close_issue_update.checked
     };
 
-   axios.put('/api/issues/', {
-       ...payload
-   })
-       .then(res => console.log(`Sent successfully with response ${res}`))
-       .catch(e => {
-           throw Error(e);
-       });
+    axios.put('/api/issues/', {
+        ...payload
+    })
+        .then(res => console.log(`Sent successfully with response ${res}`))
+        .catch(e => {
+            throw Error(e);
+        });
 });
 
 // Deleting an issue
@@ -91,4 +82,29 @@ deleteIssuesForm.addEventListener('submit', (e) => {
         .catch(e => {
             throw Error(e);
         });
+});
+
+// Get issues
+const getIssuesForm = document.getElementById('getIssuesForm');
+const assignedToInput = document.getElementById('assigned_to');
+const openIssuesCheck = document.getElementById('openIssueCheck');
+
+getIssuesForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const payload = {
+        assigned_to: assignedToInput.value,
+        open_issues: openIssuesCheck.checked
+    };
+
+    axios({
+        method: 'get',
+        url: '/api/issues/',
+        params: {...payload}
+    })
+        .then(res => {
+            console.log(res);
+        }).catch(e => {
+        console.log("Error: " + e);
+    });
 });
