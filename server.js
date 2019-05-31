@@ -4,14 +4,27 @@ const cors = require('cors');
 const apiRoutes = require('./routes/api.js');
 const dotEnv = require('dotenv').config();
 const helmet = require('helmet');
+const mysql = require('mysql');
+const app = express();
 
 if (dotEnv.error) {
     throw dotEnv.error;
-} else {
-    console.log(dotEnv.parsed);
 }
 
-const app = express();
+// Connecting to mysql database
+const connection = mysql.createConnection({
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD
+});
+
+connection.connect(function(err) {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
+});
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/client', express.static(process.cwd() + '/client'));
