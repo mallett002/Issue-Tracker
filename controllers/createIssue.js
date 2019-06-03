@@ -7,23 +7,20 @@ module.exports = (req, res) => {
     const assignedTo = req.body.assignedTo;
     const statusText = req.body.statusText;
     const date = moment();
-
     let created_on = date.format("dddd, MMMM Do YYYY, h:mm:ss a");
     let updated_on = "";
 
-    const payload = {
-        title,
-        text,
-        createdBy,
-        assignedTo,
-        statusText,
-        created_on,
-        updated_on,
-        open: true,
-        _id: 1
-    };
+    // Create query with form data
+    const queryString = "INSERT INTO `issue_tracker.issues` (issue_title, issue_text, created_by, assigned_to, status_text, created_on, updated_on) VALUES ('" +
+        title + "', '" + text + "', '" + createdBy + "', '" + assignedTo + "', '" + statusText + "', '" + created_on + "', '" + updated_on + "')";
 
-    console.log({payload});
+    // Send data to db
+    db.query(queryString, (err, result) => {
+        if (err) throw Error(err);
+        console.log(`Created issue: ${result}`);
+    });
+
+    // Send feedback to user
 
     res.status(201).send(`created a new issue with title ${title}`);
 };
