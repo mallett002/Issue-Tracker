@@ -4,14 +4,15 @@ const cors = require('cors');
 const apiRoutes = require('./routes/api.js');
 const dotEnv = require('dotenv').config();
 const helmet = require('helmet');
+const app = express();
+const connect = require('./database/connection');
 
 if (dotEnv.error) {
     throw dotEnv.error;
-} else {
-    console.log(dotEnv.parsed);
 }
 
-const app = express();
+// Connecting to mysql database
+connect();
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/client', express.static(process.cwd() + '/client'));
