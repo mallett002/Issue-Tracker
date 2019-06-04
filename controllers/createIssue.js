@@ -11,12 +11,16 @@ module.exports = (req, res) => {
     let updated_on = "";
 
     // Create query with form data
-    const queryString = "INSERT INTO `issue_tracker.issues` (issue_title, issue_text, created_by, assigned_to, status_text, created_on, updated_on) VALUES ('" +
-        title + "', '" + text + "', '" + createdBy + "', '" + assignedTo + "', '" + statusText + "', '" + created_on + "', '" + updated_on + "')";
+    const queryString = `INSERT INTO issues
+      (issue_title, issue_text, created_by, assigned_to, status_text, created_on, updated_on) 
+      VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const values = [title, text, createdBy, assignedTo, statusText, created_on, updated_on];
 
     // Send data to db
-    db.query(queryString, (err, result) => {
-        if (err) throw Error(err);
+    db.query(queryString, values, (err, result) => {
+        if (err) {
+            return console.error(err.message);
+        }
         console.log(`Created issue: ${result}`);
     });
 
