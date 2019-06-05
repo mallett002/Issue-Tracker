@@ -1,5 +1,28 @@
 import axios from 'axios';
 
+
+
+// handling user feedback:
+const userFeedback = document.getElementById("user-feedback");
+const alertDiv = userFeedback.firstElementChild;
+const successClass = "alert alert-success";
+const errorClass = "alert alert-danger";
+
+function handleFeedback(status) {
+    if (status === 'error') {
+        alertDiv.classList.add("alert");
+        alertDiv.classList.add("alert-danger");
+        userFeedback.style.display = 'block';
+    } else {
+        alertDiv.classList.add("alert");
+        alertDiv.classList.add("alert-success");
+        userFeedback.style.display = 'block';
+    }
+    setTimeout(() => {
+        userFeedback.style.display = "none";
+    }, 4000);
+}
+
 // Forms
 const createIssuesForm = document.getElementById('createIssuesForm');
 const updateIssuesForm = document.getElementById('updateIssuesForm');
@@ -28,9 +51,22 @@ createIssuesForm.addEventListener('submit', (e) => {
     })
         .then(res => console.log(`Sent successfully with response: ${res}`))
         .catch(e => {
+            handleFeedback("error");
             throw Error(e);
         });
+
+    // show user feedback
+    handleFeedback('success');
+
+    // clear inputs
+    issue_title_create.value = "";
+    issue_text_create.value = "";
+    created_by_create.value = "";
+    assigned_to_create.value = "";
+    status_text_create.value = "";
 });
+
+
 
 // Updating an issue
 const idUpdate = document.getElementById('id_update');

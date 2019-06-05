@@ -4,7 +4,15 @@
 }
 
 body {
-    padding: 10px;
+    padding: 10px 0 10px 0;
+}
+
+.user-feedback {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    display: none;
 }
 
 #header {
