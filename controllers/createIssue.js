@@ -19,12 +19,8 @@ module.exports = (req, res) => {
     // Send data to db
     db.query(queryString, values, (err, result) => {
         if (err) {
-            return console.error(err.message);
+            return res.status(500).send(err);
         }
-        console.log(`Created issue: ${result}`);
+        res.redirect("/");
     });
-
-    // Send feedback to user
-
-    res.status(201).send(`created a new issue with title ${title}`);
 };
