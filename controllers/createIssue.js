@@ -17,7 +17,7 @@ module.exports = (req, res) => {
     const values = [title, text, createdBy, assignedTo, statusText, created_on, updated_on];
 
     // Send data to db
-    db.query(queryString, values, (err, result) => {
+    db.query(queryString, values, (err) => {
         if (err) {
             return res.status(500).send(err);
         }
