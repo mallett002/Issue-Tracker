@@ -5,22 +5,26 @@ import axios from 'axios';
 // handling user feedback:
 const userFeedback = document.getElementById("user-feedback");
 const alertDiv = userFeedback.firstElementChild;
-const successClass = "alert alert-success";
-const errorClass = "alert alert-danger";
+const successClass = ["alert", "alert-success"];
+const errorClass = ["alert", "alert-danger"];
 
-function handleFeedback(status) {
-    if (status === 'error') {
-        alertDiv.classList.add("alert");
-        alertDiv.classList.add("alert-danger");
-        userFeedback.style.display = 'block';
-    } else {
-        alertDiv.classList.add("alert");
-        alertDiv.classList.add("alert-success");
-        userFeedback.style.display = 'block';
-    }
+function setFeedback(status) {
+    alertDiv.classList.add(status[0], status[1]);
+    userFeedback.style.display = 'block';
+
     setTimeout(() => {
         userFeedback.style.display = "none";
+        alertDiv.classList.remove(status[0], status[1]);
     }, 4000);
+}
+
+function handleFeedback(status, message) {
+    alertDiv.textContent = message;
+    if (status === 'error') {
+        setFeedback(errorClass);
+    } else {
+        setFeedback(successClass);
+    }
 }
 
 // Forms
@@ -51,12 +55,12 @@ createIssuesForm.addEventListener('submit', (e) => {
     })
         .then(res => console.log(`Sent successfully with response: ${res}`))
         .catch(e => {
-            handleFeedback("error");
+            handleFeedback('error', 'A server error occurred...');
             throw Error(e);
         });
 
     // show user feedback
-    handleFeedback('success');
+    handleFeedback('success', 'Successfully created issue!');
 
     // clear inputs
     issue_title_create.value = "";
