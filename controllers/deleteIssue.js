@@ -1,9 +1,22 @@
 module.exports = (req, res) => {
     const id = req.body.id;
-    console.log(`searching database for id ${id}`);
 
     // find one with id of "req.body.id" and delete it
-    // send response
+    const deleteIssueQuery = `DELETE FROM issues WHERE id = ?`;
+    const getIssueQuery =  `SELECT * FROM issues WHERE id = ?`;
 
-    res.status(201).send(`deleted issue with id ${id}`);
+    db.query(getIssueQuery, [id], (err, result) => {
+       if (err) {
+           return res.status(500).send(err);
+       }
+
+        db.query(deleteIssueQuery, [id], (err, result) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            res.redirect("/");
+        });
+    });
+
+
 };

@@ -53,14 +53,13 @@ createIssuesForm.addEventListener('submit', (e) => {
     axios.post("/api/issues/", {
         ...payload
     })
-        .then(res => console.log(`Sent successfully with response: ${res}`))
+        .then((res) => {
+            handleFeedback('success', 'Successfully created issue!')
+        })
         .catch(e => {
             handleFeedback('error', 'A server error occurred...');
             throw Error(e);
         });
-
-    // show user feedback
-    handleFeedback('success', 'Successfully created issue!');
 
     // clear inputs
     issue_title_create.value = "";
@@ -116,12 +115,12 @@ deleteIssuesForm.addEventListener('submit', (e) => {
     axios({
         method: 'delete',
         url: '/api/issues/',
-        data: {...payload}
-    })
-        .then(res => console.log(`Sent successfully with response ${res}`))
-        .catch(e => {
-            throw Error(e);
-        });
+        data: {...payload},
+    }).then(res => {
+        handleFeedback('success',  `Successfully deleted issue with id ${id}`);
+    }).catch(err => {
+        handleFeedback('error', 'A server error occurred...');
+    });
 });
 
 // Get issues
