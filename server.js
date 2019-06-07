@@ -31,13 +31,7 @@ app.use(helmet({
     dnsPrefetchControl: false
 }));
 
-// Index page (static HTML)
-app.route('/')
-    .get((req, res) => {
-        res.sendFile(process.cwd() + '/views/index.html');
-    });
-
-// Routing for API
+// Routes for the app
 apiRoutes(app);
 
 // 404 Middleware

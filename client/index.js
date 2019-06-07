@@ -53,8 +53,8 @@ createIssuesForm.addEventListener('submit', (e) => {
     axios.post("/api/issues/", {
         ...payload
     })
-        .then((res) => {
-            handleFeedback('success', 'Successfully created issue!')
+        .then(() => {
+            handleFeedback('success', 'Successfully created issue!');
         })
         .catch(e => {
             handleFeedback('error', 'A server error occurred...');
@@ -116,10 +116,11 @@ deleteIssuesForm.addEventListener('submit', (e) => {
         method: 'delete',
         url: '/api/issues/',
         data: {...payload},
-    }).then(res => {
-        handleFeedback('success',  `Successfully deleted issue with id ${id}`);
-    }).catch(err => {
+    }).then(() => {
+        handleFeedback('success',  `Successfully deleted issue with id ${payload.id}`);
+    }).catch(() => {
         handleFeedback('error', 'A server error occurred...');
+        throw Error(err);
     });
 });
 
