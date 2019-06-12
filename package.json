@@ -10,7 +10,8 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open --hot",
-    "test": "mocha"
+    "test": "mocha",
+    "start-local": "npm start && node server"
   },
   "repository": {
     "type": "git",
