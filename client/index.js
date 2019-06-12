@@ -96,10 +96,22 @@ updateIssuesForm.addEventListener('submit', (e) => {
     axios.put('/api/issues/', {
         ...payload
     })
-        .then(res => console.log(`Sent successfully with response ${res}`))
-        .catch(e => {
+        .then(() => {
+            handleFeedback('success', 'Successfully updated issue!');
+        })
+        .catch((e) => {
+            handleFeedback('error', 'A server error occurred...');
             throw Error(e);
         });
+
+    // Clear inputs
+    idUpdate.value = "";
+    title_update.value = "";
+    text_update.value = "";
+    created_by_update.value = "";
+    assigned_to_update.value = "";
+    status_text_update.value = "";
+    close_issue_update.checked = false;
 });
 
 // Deleting an issue

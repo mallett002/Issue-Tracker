@@ -13,7 +13,7 @@ module.exports = () => {
             console.error('error connecting: ' + err.stack);
             return;
         }
-        console.log('connected as id ' + db.threadId);
+        console.log('connected to database as id ' + db.threadId);
     });
     global.db = db;
 };
