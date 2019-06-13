@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-
+import displayIssues from './displayIssues';
 
 // handling user feedback:
 const userFeedback = document.getElementById("user-feedback");
@@ -68,8 +67,6 @@ createIssuesForm.addEventListener('submit', (e) => {
     assigned_to_create.value = "";
     status_text_create.value = "";
 });
-
-
 
 // Updating an issue
 const idUpdate = document.getElementById('id_update');
@@ -155,8 +152,9 @@ getIssuesForm.addEventListener('submit', (e) => {
         params: {...payload}
     })
         .then(res => {
-            console.log(res);
+            handleFeedback('success', 'Successfully retrieved issues');
+            displayIssues(res.data);
         }).catch(e => {
-        console.log("Error: " + e);
+            handleFeedback('error', 'A server error occurred...');
     });
 });

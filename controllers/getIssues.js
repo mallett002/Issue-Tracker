@@ -1,14 +1,37 @@
 module.exports = (req, res) => {
-    console.log('Retrieving issues...');
-    const title = req.query.assigned_to;
-    const open = req.query.open_issues;
-    let querySearch = {title};
+    const assignedTo = req.query.assigned_to;
+    const openIssues = req.query.open_issues ? true : false;
+    let values = [];
 
-    if (open) {
-        querySearch.open = true
+    let queryString = 'SELECT * FROM issues';
+
+    if (assignedTo || openIssues) {
+        queryString += ' WHERE ';
+        if (assignedTo) {
+            queryString += 'assigned_to = ?';
+            values.push(assignedTo);
+        }
+        if (assignedTo && openIssues) {
+            queryString += " && closed_issue = ?";
+            values.push('false');
+        }
+        if (openIssues) {
+            queryString += "closed_issue = ?";
+            values.push('false');
+        }
     }
 
-    console.log({querySearch});
+    queryString += ' ORDER BY id ASC';
 
-    res.json(querySearch);
+    db.query(queryString, [values], (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        if (result.length) {
+            res.send(result);
+        } else {
+            return res.status(500).send(err);
+        }
+    });
 };
