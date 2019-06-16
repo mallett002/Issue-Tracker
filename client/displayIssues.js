@@ -5,14 +5,28 @@ module.exports = (data) => {
         console.log(issue);
 
         // make the container div for the issue
+        const issueLi = document.createElement('li');
         const issueDiv = document.createElement('div');
-        issueDiv.classList.add('retrieved-issue');
+        issueDiv.className = "card";
+        issueLi.appendChild(issueDiv);
 
-        // TODO: make contents for each database column
-        // TODO: Could possibly create the div first for layout in HTML and design it. then come in here and create it.
-        const contents = document.createElement('ul');
-        // issueDiv.appendChild(contents);
+        // Make card header
+        const cardHeader = document.createElement('div');
+        cardHeader.className = "card-header alert alert-secondary issue-header";
+        cardHeader.setAttribute('role', 'alert');
 
-        issueContainer.appendChild(issueDiv);
+        const cardTitle = document.createElement('p');
+        cardTitle.textContent = issue.issue_title;
+        cardHeader.appendChild(cardTitle);
+
+        const issueCaret = document.createElement('i');
+        issueCaret.className = 'fa issue-caret';
+        issueCaret.textContent = '&#xf0d7';
+
+        cardHeader.appendChild(issueCaret);
+
+        // TODO: Make card body
+
+        issueContainer.appendChild(issueLi);
     });
 };
