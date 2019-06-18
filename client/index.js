@@ -1,5 +1,6 @@
 import axios from 'axios';
 import displayIssues from './displayIssues';
+import clearIssues from './clearIssues';
 
 // handling user feedback:
 const userFeedback = document.getElementById("user-feedback");
@@ -140,6 +141,7 @@ const openIssuesCheck = document.getElementById('openIssueCheck');
 
 getIssuesForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    clearIssues();
 
     const payload = {
         assigned_to: assignedToInput.value,

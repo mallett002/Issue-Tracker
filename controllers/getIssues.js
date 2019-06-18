@@ -1,6 +1,7 @@
 module.exports = (req, res) => {
     const assignedTo = req.query.assigned_to;
-    const openIssues = req.query.open_issues ? true : false;
+    const openIssues = req.query.open_issues === 'true';
+
     let values = [];
 
     let queryString = 'SELECT * FROM issues';

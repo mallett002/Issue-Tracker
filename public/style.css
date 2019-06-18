@@ -52,6 +52,14 @@ li {
 .issue-caret {
     font-size: 30px;
     cursor: pointer;
+    position: relative;
+    top: 10px;
+}
+
+.caret-flipped {
+    transform: rotate(180deg);
+    position: relative;
+    top: -15px;
 }
 
 .issue-card-body {
