@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-
+import displayIssues from './displayIssues';
+import clearIssues from './clearIssues';
 
 // handling user feedback:
 const userFeedback = document.getElementById("user-feedback");
@@ -68,8 +68,6 @@ createIssuesForm.addEventListener('submit', (e) => {
     assigned_to_create.value = "";
     status_text_create.value = "";
 });
-
-
 
 // Updating an issue
 const idUpdate = document.getElementById('id_update');
@@ -141,22 +139,36 @@ const getIssuesForm = document.getElementById('getIssuesForm');
 const assignedToInput = document.getElementById('assigned_to');
 const openIssuesCheck = document.getElementById('openIssueCheck');
 
-getIssuesForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+function getIssues(source) {
+    clearIssues();
 
-    const payload = {
-        assigned_to: assignedToInput.value,
-        open_issues: openIssuesCheck.checked
-    };
+    let payload = {};
+    if (source) {
+        payload.assigned_to = assignedToInput.value;
+        payload.open_issues = openIssuesCheck.checked
+    }
 
     axios({
         method: 'get',
         url: '/api/issues/',
-        params: {...payload}
+        params: payload
     })
         .then(res => {
-            console.log(res);
+            handleFeedback('success', 'Successfully retrieved issues');
+            displayIssues(res.data);
         }).catch(e => {
-        console.log("Error: " + e);
+        handleFeedback('error', 'A server error occurred...');
     });
+}
+
+// Get issues through input
+getIssuesForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    getIssues('input');
+});
+
+// Get all issues on page load
+window.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
+    getIssues();
 });

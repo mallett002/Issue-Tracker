@@ -7,6 +7,14 @@ body {
     padding: 10px 0 10px 0;
 }
 
+li {
+    list-style: none;
+}
+
+.issue-control-btn {
+    width: 6em;
+}
+
 .user-feedback {
     position: fixed;
     width: 100%;
@@ -33,6 +41,44 @@ body {
     padding: 5px;
     width: 60%;
     border: 2px solid black;
+}
+
+.issue-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0 !important;
+}
+
+.issue-caret {
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+}
+
+.caret-flipped {
+    transform: rotate(180deg);
+    position: relative;
+    top: -15px;
+}
+
+.issue-card-body {
+    padding-top: 7px !important;
+    padding-bottom: 0 !important;
+}
+
+.issue-info {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-hidden {
+    display: none;
+}
+
+.content-show {
+    display: block;
 }
 
 .closed {
