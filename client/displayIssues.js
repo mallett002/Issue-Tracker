@@ -14,13 +14,12 @@ module.exports = (data) => {
         cardHeader.className = "card-header alert alert-secondary issue-header";
         cardHeader.setAttribute('role', 'alert');
 
-        // todo: fix this span so can insert color based on closed issue or not
-        // Red #9e3b3b & Green #448844
         const cardTitle = document.createElement('p');
         const titleIssueNumber = document.createElement('span');
         titleIssueNumber.textContent = `#${issue.id}`;
+        titleIssueNumber.style.color = issue.closed_issue === 'true' ? '#9e3b3b' : '#448844';
         cardTitle.textContent = ` ${issue.issue_title}`;
-        cardTitle.appendChild(titleIssueNumber);
+        cardTitle.prepend(titleIssueNumber);
         cardHeader.appendChild(cardTitle);
 
         const issueCaret = document.createElement('i');
