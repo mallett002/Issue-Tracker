@@ -14,8 +14,20 @@ if (dotEnv.error) {
 // Connecting to mysql database
 connect();
 
-app.use('/public', express.static(process.cwd() + '/public'));
-app.use('/client', express.static(process.cwd() + '/client'));
+if (process.env.NODE_ENV === 'production') {
+    app.use('/public', express.static(process.cwd() + '/public'));
+    app.use('/client', express.static(process.cwd() + '/client'));
+} else {
+    const webpack = require('webpack');
+    const webpackDevMiddleware = require('webpack-dev-middleware');
+    const config = require('./webpack.dev.js');
+    const compiler = webpack(config);
+
+    app.use(webpackDevMiddleware(compiler, {
+        publicPath: config.output.publicPath
+    }));
+}
+
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

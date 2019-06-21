@@ -1,6 +1,7 @@
 import axios from 'axios';
 import displayIssues from './displayIssues';
 import clearIssues from './clearIssues';
+import '../public/style.css';
 
 // handling user feedback:
 const userFeedback = document.getElementById("user-feedback");

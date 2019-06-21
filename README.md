@@ -1,6 +1,6 @@
 # Issue-Tracker
-CRUD App for listing issues
+Express + MySql CRUD App for handling issues
 
-## Running Locally
-- Run `npm start` for webpack dev server.
-- Run `nodemon server` for running `server.js`.
+###Running Locally
+- Run `npm start` to run the client side.
+- Run `npm run server` for running both client and server together.

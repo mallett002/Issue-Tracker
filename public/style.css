@@ -50,10 +50,10 @@ li {
 }
 
 .issue-caret {
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
     position: relative;
-    top: 10px;
+    top: 6px;
 }
 
 .caret-flipped {
