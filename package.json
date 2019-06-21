@@ -7,10 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development --open --hot",
-    "test": "mocha"
+    "build": "webpack --config webpack.prod.js",
+    "server": "nodemon server.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js --hot"
   },
   "repository": {
     "type": "git",
@@ -50,6 +49,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
   }
 }
