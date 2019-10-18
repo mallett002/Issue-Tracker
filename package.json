@@ -10,7 +10,7 @@
     "build": "webpack --config webpack.prod.js",
     "server": "nodemon server.js",
     "start": "webpack-dev-server --open --config webpack.dev.js --hot",
-    "start:prod": "node server.js"
+    "start:prod": "npm run build && node /dist/bundle.js"
   },
   "repository": {
     "type": "git",

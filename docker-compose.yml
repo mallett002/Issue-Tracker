@@ -6,12 +6,12 @@ services:
     build: .
     ports:
       - "80:3000"
-    depends_on:
-      - db
     links:
       - db
+    depends_on:
+      - db
     environment:
-      - PORT=8080
+      - PORT=3000
       - HOST=db
       - PASSWORD=Wux70bah!
       - USER=root
@@ -22,3 +22,5 @@ services:
     restart: always
     ports:
       - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=Wux70bah!
